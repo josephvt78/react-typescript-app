@@ -36,13 +36,13 @@ function AboutPage() {
 const isMyButtonToBeShown = false;
 
 const products = [
-  { title: 'Development Environment Setup', id: 1 },
-  { title: 'Application Development', id: 2 },
-  { title: 'Deployment and Support', id: 3 },
+  { title: 'Development Environment Setup', id: 1, isPrimary: false },
+  { title: 'Application Development', id: 2, isPrimary: true },
+  { title: 'Deployment and Support', id: 3, isPrimary: false },
 ];
 
 const listItems = products.map(product =>
-  <li key={product.id}>
+  <li key={product.id} style={{ color: product.isPrimary ? 'green' : 'blue'}} >
     {product.title}
   </li>
 );
