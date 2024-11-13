@@ -5,6 +5,11 @@ import './App.css';
 import { useState } from 'react';
 
 
+interface ClickCounterButtonProps {
+  count: number;
+  onClick: () => void;
+}
+
 const user = {
   name: 'Joseph Varghese',
   imageUrl: process.env.PUBLIC_URL + '/logo192.png',
@@ -61,32 +66,31 @@ function ClickMeButton() {
 }
 
 
-function ClickCounterButton() {
-
+function App() {
   const [count, setCount] = useState(0);
 
   function handleClick() {
     setCount(count + 1);
   }
-
-  return (
-    <button onClick={handleClick}>
-      Clicked {count} times
-    </button>
-  );
-}
-
-function App() {
+  
   return (
     <div className="App">
       <h1>Welcome to my app</h1>
       { isMyButtonToBeShown && <MyButton/>}
       <ClickMeButton/>
       <div><ul>{listItems}</ul></div>
-      <ClickCounterButton/> <br/>
-      <ClickCounterButton/>
+      <ClickCounterButton count={count} onClick={handleClick}/> <br/>
+      <ClickCounterButton count={count} onClick={handleClick}/>
       <AboutPage/>
     </div>
+  );
+}
+
+function ClickCounterButton({count, onClick} : ClickCounterButtonProps) {
+  return (
+  <button onClick={onClick}>
+    Clicked {count} times
+  </button>
   );
 }
 
