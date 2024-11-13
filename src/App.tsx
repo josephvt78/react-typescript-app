@@ -21,7 +21,7 @@ function MyButton() {
 function AboutPage() {
   return (
     <>
-      <h1>{user.name} </h1>
+      <h3>{user.name} </h3>
       <img
         src={user.imageUrl}
         style={{
@@ -33,11 +33,27 @@ function AboutPage() {
   );
 }
 
+const isMyButtonToBeShown = false;
+
+const products = [
+  { title: 'Development Environment Setup', id: 1 },
+  { title: 'Application Development', id: 2 },
+  { title: 'Deployment and Support', id: 3 },
+];
+
+const listItems = products.map(product =>
+  <li key={product.id}>
+    {product.title}
+  </li>
+);
+
+
 function App() {
   return (
     <div className="App">
       <h1>Welcome to my app</h1>
-      <MyButton/>
+      { isMyButtonToBeShown && <MyButton/>}
+      <div><ul>{listItems}</ul></div>
       <AboutPage/>
     </div>
   );
