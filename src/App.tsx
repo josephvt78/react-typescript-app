@@ -47,12 +47,25 @@ const listItems = products.map(product =>
   </li>
 );
 
+function ClickMeButton() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+
 
 function App() {
   return (
     <div className="App">
       <h1>Welcome to my app</h1>
       { isMyButtonToBeShown && <MyButton/>}
+      <ClickMeButton/>
       <div><ul>{listItems}</ul></div>
       <AboutPage/>
     </div>
